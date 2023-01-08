@@ -2,7 +2,7 @@ const messages = []
 
 const data = {
 	save(req, _res, next) {
-		const message = req.body
+		const { body: message } = req
 		messages.push(message)
 		next()
 	},
