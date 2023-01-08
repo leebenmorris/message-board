@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "## The task",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
 		"test": "NODE_OPTIONS=--experimental-vm-modules jest ./tests",
 		"lint": "eslint .",
