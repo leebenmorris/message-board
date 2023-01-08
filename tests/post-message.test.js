@@ -20,7 +20,7 @@ const goodMessage = {
 }
 
 describe('post /message/new', () => {
-	describe('when sent a form encoded message in the correct format', () => {
+	describe('when sent a json encoded message in the correct format', () => {
 		let res
 		beforeEach(async () => {
 			res = await post(app).send(goodMessage)
