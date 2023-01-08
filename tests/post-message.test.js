@@ -3,7 +3,10 @@ import supertest from 'supertest'
 
 jest.unstable_mockModule('../src/data.js', () => ({
 	default: {
-		save: jest.fn((req, res, next) => {
+		save: jest.fn((_req, _res, next) => {
+			next()
+		}),
+		getAll: jest.fn((_req, _res, next) => {
 			next()
 		}),
 	},
