@@ -3,9 +3,6 @@ import supertest from 'supertest'
 
 const { default: app } = await import('../src/app.js')
 
-const post = theApp => supertest(theApp).post('/message/new').type('json')
-const getAll = theApp => supertest(theApp).get('/message/all')
-
 const messages = [
 	{
 		message: 'Hello there!',
@@ -24,12 +21,14 @@ const messages = [
 describe('get /message/all', () => {
 	describe('when getting all of the messages', () => {
 		let res
-		beforeEach(async () => {
+		beforeAll(async () => {
+			const server = supertest(app)
+
 			for (const message of messages) {
-				await post(app).send(message)
+				await server.post('/message/new').type('json').send(message)
 			}
 
-			res = await getAll(app)
+			res = await server.get('/message/all')
 		})
 
 		it('should return a 200 code', () => {
