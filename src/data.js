@@ -6,6 +6,10 @@ const data = {
 		messages.push(message)
 		next()
 	},
+	getAll(_req, res, next) {
+		res.locals.messages = messages
+		next()
+	},
 }
 
 export default data
